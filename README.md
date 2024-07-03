@@ -7,9 +7,9 @@
 > 
 > and no rendering library like qt or gtk ... is used
 > 
-> Using any font like monospace won't do,
+> Using any font like monospace-based ones won't do,
 >
-> since every character has it's own spacing
+> since every character has its own spacing
 
 ## Prolog?
 
