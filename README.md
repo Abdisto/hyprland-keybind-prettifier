@@ -42,3 +42,7 @@ The format in the end should be something like: `key key [...], action, command`
 generate_file > keybinds.txt
 ```
 And done!
+
+# Previw
+
+![](https://raw.githubusercontent.com/Abdisto/hyprland-keybind-prettifier/main/preview.jpg)
