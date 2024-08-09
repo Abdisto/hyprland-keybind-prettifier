@@ -43,6 +43,29 @@ generate_file > keybinds.txt
 ```
 And done!
 
+# Viewing
+
+I used a bash script that works like a toggle and opens/closes a kitty window. I've missplaced my original bash script but it should look something like this. 
+```
+#!/usr/bin/env bash
+
+# Defining a unique window name
+TITLE="Keybinds Viewer"
+file_path="/path/to/txt/file"
+
+# Check if kitty is already running
+if pgrep -f "kitty --title $TITLE" > /dev/null; then
+    pkill -f "kitty --title $TITLE"
+else
+    kitty --title "$TITLE" --hold --override font_size=14 --geometry 800x600 sh -c "vim -R -c 'set nomodifiable' $file_path;"
+fi
+```
+If you use hyprland you can declare the windowrules like this to have a similar output to my preview picture.
+```
+windowrulev2 = float,class:kitty,title:Keybinds Viewer
+windowrulev2 = size 800 750,class:kitty,title:Keybinds Viewer
+```
+
 # Previw
 
 ![](https://raw.githubusercontent.com/Abdisto/hyprland-keybind-prettifier/main/preview.jpg)
