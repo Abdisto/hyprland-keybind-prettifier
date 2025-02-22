@@ -36,7 +36,7 @@ gcc -std=c11 -pedantic -Wall -Werror -D_XOPEN_SOURCE=700 -o generate_file keybin
 # Usage
 
 Modify the shell script to your heart's content. (Using ChatGPT simplifies this process. I used it with the addition of another person's shell script [source](https://github.com/jason9075/rofi-hyprland-keybinds-cheatsheet))
-The format in the end should be something like: `key key [...], action, command` The should be a big limit on how many keys you want to add. In my terms `key` is something like `ctrl` while `action` is any key that isn't special like `y`.
+The format in the end should be something like: `key key [...], action, command` There should be a high limit on how many keys you want to add. In my terms `key` is something like `ctrl` while `action` is any key that isn't special like `y`.
 
 ```
 generate_file > keybinds.txt
