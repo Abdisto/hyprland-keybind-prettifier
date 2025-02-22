@@ -11,7 +11,11 @@ struct Binding {
 
 char* center_string(char* str, int space) {
     int len = strlen(str);
-    char* new_str = (char*)malloc(sizeof(char) * (space + 1));
+    if (len >= space) {
+        return strdup(str);
+    }
+
+    char* new_str = (char*)malloc(space + 1);
 
     if (new_str == NULL) {
         return NULL;
@@ -34,7 +38,8 @@ char* center_string(char* str, int space) {
 }
 
 void render_key(char* str, char* command) {
-    char* token = strtok(str, " ");
+    char* tokenized_str = strdup(str);
+    char* token = strtok(tokenized_str, " ");
     int tokens = 0;
     char* tokens_array[10];
 
@@ -65,7 +70,7 @@ void render_key(char* str, char* command) {
             free(centered_string);
         } else {
             perror("Memory issue");
-        } 
+        }
     }
     printf("  %s", command);
 
@@ -77,6 +82,8 @@ void render_key(char* str, char* command) {
         }
     }
     printf("\n");
+
+    free(tokenized_str);
 }
 
 int main() {
@@ -96,14 +103,16 @@ int main() {
     }
 
     while (fgets(data, sizeof(data), pf) != NULL) {
-	char *comment = strtok(data, "#"); // Remove if no comments appreciated
+        data[strcspn(data, "\n")] = 0;
+        char *line = strdup(data);
+        char *comment = strtok(line, "#"); // Remove if no comments appreciated and change data to line
         char *key = strtok(data, ",");
         char *action = strtok(NULL, ",");
         char *command = strtok(NULL, "#");
 
         if (key && action && command) {
             sprintf(bindings[count].key_action, "%s %s", key, action);
-            sprintf(bindings[count].command, "%s", command);
+            sprintf(bindings[count].command, "%s\n", command);
 
             render_key(bindings[count].key_action, bindings[count].command);
 
