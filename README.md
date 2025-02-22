@@ -10,6 +10,8 @@
 > Using any font like not monospace-based ones won't do,
 >
 > since every character has its own spacing
+> 
+> Did not account longer key names will revise it in the future maybe.
 
 ## Prolog?
 
