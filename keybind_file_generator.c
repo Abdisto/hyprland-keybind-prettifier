@@ -90,7 +90,7 @@ int main() {
     struct Binding bindings[MAX_BINDINGS];
     FILE *pf;
     char script[256];
-    char data[sizeof(char) * 1028];
+    char data[1028];
     int count = 0;
 
     sprintf(script, "./keys.sh");
@@ -104,11 +104,11 @@ int main() {
 
     while (fgets(data, sizeof(data), pf) != NULL) {
         data[strcspn(data, "\n")] = 0;
-        char *line = strdup(data);
-        char *comment = strtok(line, "#"); // Remove if no comments appreciated and change data to line
-        char *key = strtok(data, ",");
-        char *action = strtok(NULL, ",");
-        char *command = strtok(NULL, "#");
+        char* line = strdup(data);
+        char* comment = strtok(line, "#"); // Remove if no comments appreciated and change data to line
+        char* key = strtok(data, ",");
+        char* action = strtok(NULL, ",");
+        char* command = strtok(NULL, "#");
 
         if (key && action && command) {
             sprintf(bindings[count].key_action, "%s %s", key, action);
